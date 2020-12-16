@@ -1,8 +1,40 @@
+<h2>User info</h2>
+<div class="profile-contianer">
+  <%= attachment_image_tag @book.user, :profile_image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg" %>
+  <table>
+    <tr>
+      <th>name</th>
+      <th><%= @book.user.name %></th>
+    </tr>
+    <tr>
+      <th>introduction</th>
+      <th><%= @book.user.introduction %></th>
+    </tr>
+  </table>
+</div>
+
+
+<div class="profile-edit">
+  <% if @book.user_id ==current_user.id %>
+    <p><%= link_to "プロフィール編集", edit_user_path(@book.user) %></p>
+  <% end %>
+</div>
+
+<h2>New book</h2>
+<div class="new-book">
+    <%= form_with model: @book, local: true do |f| %>
+      <p>Title</p><%= f.text_field :title %>
+      <p>Opinion</p><%= f.text_area :body %>
+        <%= f.submit "送信する" %>
+    <% end %>
+</div>
+
+
 <h2>Books detail</h2>
-
-
 <table>
   <tr>
+    <td><%= attachment_image_tag @book.user, :profile_image, :fill, 30, 30, format: 'jpeg', fallback: "no_image.jpg" %></td>
+    <td><%= link_to @book.user.name, user_path(@book.user) %></td>
     <td><%= @book.title %></td>
     <td><%= @book.body %></td>
     <% if @book.user_id == current_user.id %>
