@@ -1,10 +1,10 @@
 <h2>Books detail</h2>
 
 
-<tabl>
+<table>
   <tr>
-    <td><% @book.title %></td>
-    <td><% @book.body %></td>
+    <td><%= @book.title %></td>
+    <td><%= @book.body %></td>
     <% if @book.user_id == current_user.id %>
     <td><%= link_to "Edit", edit_book_path %></td>
     <td><%= link_to "Destroy", book_path(@book), method: :delete, data: {confirm: "本当に消しますか？"} %></td>
