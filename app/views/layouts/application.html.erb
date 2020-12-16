@@ -46,6 +46,16 @@
       </nav>
     </header>
     
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    
+   <p class="alert"><%= alert %></p>
+    
+
+    
     <%= yield %>
     
   <footer><p>CopyRight Inflatop.Inc</p></footer>
