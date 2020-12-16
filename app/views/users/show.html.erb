@@ -1,5 +1,11 @@
 
-
+<div class="new-book">
+    <%= form_with model: @book, local: true do |f| %>
+      <p>Title</p><%= f.text_field :title %>
+      <p>Opinion</p><%= f.text_area :body %>
+        <%= f.submit "送信する" %>
+    <% end %>
+</div>
 
 <table>
   <tr>

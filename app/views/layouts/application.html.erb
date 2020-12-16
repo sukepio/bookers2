@@ -15,7 +15,7 @@
       <nav>
         <ul>
           <li><a href="">Home</a></li>
-          <li><a href="home/about">About</a></li>
+          
         
           
         <% if user_signed_in? %>
@@ -26,6 +26,9 @@
             <%= link_to "Mypage", user_path(current_user.id) %>
           </li>
         <% else %>
+          <li>
+            <a href="home/about">About</a>
+          </li>
           <li>
             <%= link_to "signup", new_user_registration_path %>
           </li>
