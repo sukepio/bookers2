@@ -1,32 +1,5 @@
-<h2>User info</h2>
-<div class="profile-contianer">
-  <%= attachment_image_tag @user, :profile_image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg" %>
-  <table>
-    <tr>
-      <th>name</th>
-      <th><%= @user.name %></th>
-    </tr>
-    <tr>
-      <th>introduction</th>
-      <th><%= @user.introduction %></th>
-    </tr>
-  </table>
-</div>
-
-<div class="profile-edit">
-  <% if @user.id ==current_user.id %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
-</div>
-
-<h2>New book</h2>
-<div class="new-book">
-    <%= form_with model: @book, local: true do |f| %>
-      <p>Title</p><%= f.text_field :title %>
-      <p>Opinion</p><%= f.text_area :body %>
-        <%= f.submit "送信する" %>
-    <% end %>
-</div>
+<%= render 'users/profile', user: @user %>
+<%= render 'newbook', book: @book %>
 
 <h2>Books</h2>
 <table>

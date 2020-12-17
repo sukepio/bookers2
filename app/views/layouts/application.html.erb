@@ -28,9 +28,6 @@
           <li>
             <%= link_to "logout", destroy_user_session_path, method: :delete %>
           </li>
-          <li>
-            <%= link_to "Mypage", user_path(current_user.id) %>
-          </li>
         <% else %>
           <li>
             <a href="home/about">About</a>
