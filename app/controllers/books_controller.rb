@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  
+  before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
 
   def create
     @book = Book.new(book_params)
@@ -42,6 +42,15 @@ class BooksController < ApplicationController
     @book.destroy
     redirect_to books_path
     
+  end
+  
+  
+  def ensure_correct_user
+    @book = Book.find(params[:id])
+    if @book.user_id != current_user.id
+    flash[:notice] = "権限がありません"
+    redirect_to books_path
+    end
   end
   
   private
