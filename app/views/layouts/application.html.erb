@@ -24,12 +24,12 @@
         </button>
         <div id="menu" class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to root_path, class: 'nav-link text-light' do %>
+              <%= link_to user_path(current_user), class: 'nav-link text-light' do %>
               <i class="fas fa-home text-light pr-2"></i>Home
               <% end %>
             </li>
-            <% if user_signed_in? %>
             <li class="nav-item">
               <%= link_to users_path, class: 'nav-link text-light' do %>
               <i class="fas fa-users text-light pr-2"></i>Users
@@ -46,6 +46,11 @@
               <% end %>
             </li>
           <% else %>
+            <li class="nav-item">
+              <%= link_to root_path, class: 'nav-link text-light' do %>
+              <i class="fas fa-home text-light pr-2"></i>Home
+              <% end %>
+            </li>
             <li class="nav-item">
               <%= link_to home_about_path, class: 'nav-link text-light' do %>
               <i class="fas fa-link text-light pr-2"></i>About
@@ -68,17 +73,18 @@
       </nav>
     </header>
     
+    
     <% if flash[:notice] %>
       <div class="flash">
+        <p class="text-success">
         <%= flash[:notice] %>
+        </p>
       </div>
     <% end %>
     
-   <p class="alert"><%= alert %></p>
-    
-
-    
+ <main class="m-3">
     <%= yield %>
+ </main>
     
   <footer class="text-center mt-4"><p>CopyRight Inflatop.Inc</p></footer>
   </body>

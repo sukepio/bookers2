@@ -1,23 +1,34 @@
-<h2>User info</h2>
-
-<% if @user.errors.any? %>
-  <h2><%= pluralize(@user.errors.count, "error") %> prohibited this book from being saved:</h2>
-  <ul>
-    <% @user.errors.full_messages.each do |message| %>
-      <li>
-        <%= message %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
-
-<%= form_with model: @user, local: true do |f| %>
-  <label for="inputName">Name</label>
-  <%= f.text_field :name, autofocus: true, id:"inputName" %>
-  <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
-  <label for="inputImage">Image</label>
-  <%= f.attachment_field :profile_image, placeholder: "ファイルを選択" %>
-  <label for="inputIntroduction">Introduction</label>
-  <%= f.text_area :introduction, autofocus: true, id:"inputIntroduction" %>
-  <%= f.submit "Update User" %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-5 col-sm-8 mx-auto">
+      
+      <h2>User info</h2>
+      
+      <div class="error-explanation text-danger">
+        <% if @user.errors.any? %>
+          <h3><%= pluralize(@user.errors.count, "error") %> prohibited this book from being saved:</h3>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li>
+                <%= message %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+      
+      <%= form_with model: @user, local: true do |f| %>
+        <div class="form-group">
+          <label for="inputName">Name</label>
+          <%= f.text_field :name, autofocus: true, id:"inputName", class:"form-control mb-3" %>
+          <label for="inputImage">Image</label>
+          <%= f.attachment_field :profile_image, placeholder: "ファイルを選択", class:"form-control-file mb-3" %>
+          <label for="inputIntroduction">Introduction</label>
+          <%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", class:"form-control mb-3" %>
+          <%= f.submit "Update User", class:"btn btn-secondary" %>
+        </div>
+      <% end %>
+  
+    </div>
+  </div>
+</div>
