@@ -1,21 +1,23 @@
 <h2>User info</h2>
 <div class="profile-container">
   <%= attachment_image_tag user, :profile_image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg" %>
-  <table>
-    <tr>
+  <table class="table">
+    <tbody>
       <th>name</th>
       <th><%= user.name %></th>
-    </tr>
-    <tr>
+    </tbody>
+    <tbody>
       <th>introduction</th>
       <th><%= user.introduction %></th>
-    </tr>
+    </tbody>
   </table>
 </div>
 
 <div class="profile-edit">
   <% if user.id ==current_user.id %>
-    <p><%= link_to "プロフィール編集", edit_user_path(user) %></p>
+    <%= link_to edit_user_path(user), class:"btn btn-outline-secondary btn-block btn-sm" do %>
+    <i class="fas fa-user-cog"></i>
+    <% end %>
   <% else %>
     <p><%= link_to "プロフィール編集", user_path(current_user) %></p>
   <% end %>
