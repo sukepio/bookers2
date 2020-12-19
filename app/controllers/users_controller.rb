@@ -33,7 +33,6 @@ class UsersController < ApplicationController
     
   end
   
-  
   def ensure_correct_user
     @user = User.find(params[:id])
     if @user.id != current_user.id
