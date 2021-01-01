@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   
+  validates :name, uniqueness: true, length: {minimum: 2, maximum: 20}
+  validates :introduction, length: {maximum: 50}
+  
+  
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :following_user, through: :follower, source: :followed
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
@@ -16,8 +20,6 @@ class User < ApplicationRecord
   
   
   
-  validates :name, uniqueness: true, length: {minimum: 2, maximum: 20}
-  validates :introduction, length: {maximum: 50}
   
   def follow(user_id)
     follower.create(followed_id: user_id)
