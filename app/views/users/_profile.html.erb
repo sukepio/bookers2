@@ -8,9 +8,20 @@
       <th><%= user.name %></th>
     </tbody>
     <tbody>
-      <th>introduction</th>
-      <th><%= user.introduction %></th>
+      <tr>
+        <th>introduction</th>
+        <th><%= user.introduction %></th>
+      </tr>
+      <tr>
+        <th>follows</th>
+        <th><%= user.follower.count %></th>
+      </tr>
+      <tr>
+        <th>followers</th>
+        <th><%= user.followed.count %></th>
+      </tr>
     </tbody>
+    
   </table>
 </div>
 <!--プロフィールここまで-->
