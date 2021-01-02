@@ -7,8 +7,8 @@ class RelationshipsController < ApplicationController
   end
   
   def unfollow
-    current_user.unfollow(params[:id])
     @user = User.find(params[:id])
+    current_user.unfollow(params[:id])
     redirect_to user_path(@user)
   end
 end

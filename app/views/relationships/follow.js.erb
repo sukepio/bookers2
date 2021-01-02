@@ -1,4 +1,4 @@
 
-$("#follow-button").html("<%= j(render 'relationships/follow-button', user: @user) %>");
-$("#following-count").html("<%= link_to @user.follower.count, following_user_path(@user) %>");
-$("#follower-count").html("<%= link_to @user.followed.count, follower_user_path(@user) %>");
+$(".follow-button").html("<%= j(render 'relationships/follow-button', user: @user) %>");
+$(".following-count").html("<%= link_to @user.follower.count, following_user_path(@user) %>");
+$(".follower-count").html("<%= link_to @user.followed.count, follower_user_path(@user) %>");

@@ -3,16 +3,16 @@
           <tr>
             <td><%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %></td>
             <td><%= user.name %></td>
-            <td>フォロー数: <%= user.follower.count %></td>
-            <td>フォロワー数: <%= user.followed.count %></td>
+            <td class="following-count">フォロー数: <%= user.follower.count %></td>
+            <td class="follower-count">フォロワー数: <%= user.followed.count %></td>
             <% unless current_user == user %>
             <% if current_user.following?(user) %>
-            <td>
-              <%= link_to 'フォロー解除', unfollow_path(user), method: :post %>
+            <td class="follow-button">
+              <%= link_to 'フォロー解除', unfollow_path(user), method: :post, remote: true %>
             </td>  
             <% else %>
-            <td>
-              <%= link_to 'フォローする', follow_path(user), method: :post %>
+            <td class="follow-button">
+              <%= link_to 'フォローする', follow_path(user), method: :post, remote: true %>
             </td>  
             <% end %>
             <% end %>

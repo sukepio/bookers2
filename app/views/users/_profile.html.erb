@@ -14,16 +14,16 @@
       </tr>
       <tr>
         <th>フォロー中</th>
-        <th id="following-count"><%= link_to user.follower.count, following_user_path(user) %></th>
+        <th class="following-count"><%= link_to user.follower.count, following_user_path(user) %></th>
       </tr>
       <tr>
         <th>フォロワー</th>
-        <th id="follower-count"><%= link_to user.followed.count, follower_user_path(user) %></th>
+        <th class="follower-count"><%= link_to user.followed.count, follower_user_path(user) %></th>
       </tr>
     </tbody>
   </table>
   <% unless current_user == user %>
-      <span id="follow-button">
+      <span class="follow-button">
         <%= render 'relationships/follow-button', user: @user %>
       </span>
   <% end %>
