@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   
   resources :users do
     member do 
-      get :follows, :followers
+      get :following, :follower
     end
   end
   
