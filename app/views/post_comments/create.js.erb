@@ -1,0 +1,2 @@
+$('.comment-btn').html('<%= j(render partial: 'post_comments/comments_form', locals: {book: @book, post_comment: @post_comment}) %>')
+$('.comments_lists_#{@book.id}').html('<%= j(render partial: 'post_comments/comments_lists', locals: {book: @book}) %>')
