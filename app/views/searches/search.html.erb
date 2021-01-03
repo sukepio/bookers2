@@ -1,17 +1,18 @@
-<div class="text-center">
-　<%= render 'searches/form' %>
-</div>
-<div class="container px-5 px-sm-0">
-  <%= render 'layouts/notification', book: @book %>
-  <div class="row">
-    <div class="col-md-3">
-      <%= render 'users/profile', user: @user %>
-      <%= render 'newbook', book: @book %>
-    </div>
-    
-    <div class="col-md-8 offset-md-1">
-    <h2>Books</h2>
-    <table class="table tab">
+<% if @model == 'user' %>
+  <h1>"Users search for "<%= @content %>"" </h1>
+  <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>Image</th>
+          <th>name</th>
+          <th></th>
+        </tr>
+        </thead>
+        <%= render 'users/follow_form', users: @records %>
+      </table>
+<% else %>
+  <h1>"Books search for "<%= @content %>""</h1>
+  <table class="table tab">
       <thead>
       <tr>
         <th></th>
@@ -19,7 +20,7 @@
         <th>Opinion</th>
       </tr>
       </thead>
-      <% @books.each do |book| %>
+      <% @records.each do |book| %>
       <tbody>
       <tr>
         <td>
@@ -37,6 +38,4 @@
       </tbody>
       <% end %>
     </table>
-    </div>
-  </div>
-</div>
+<% end %>

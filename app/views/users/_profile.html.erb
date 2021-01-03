@@ -23,8 +23,8 @@
     </tbody>
   </table>
   <% unless current_user == user %>
-      <span class="follow-button">
-        <%= render 'relationships/follow-button', user: @user %>
+      <span class="follow-button_<%= user.id %>">
+        <%= render 'relationships/follow-button', user: user %>
       </span>
   <% end %>
 </div>
